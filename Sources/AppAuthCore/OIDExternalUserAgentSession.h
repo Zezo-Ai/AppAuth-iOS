@@ -51,7 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
     @remarks Has no effect if called more than once, or after a @c cancel message was received.
     @return YES if the passed URL matches the expected redirect URL and was consumed, NO otherwise.
  */
-- (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL __deprecated_msg("Use resumeExternalUserAgentFlowWithURL:error: instead");
+- (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL
+  __deprecated_msg("Use resumeExternalUserAgentFlowWithURL:error: instead. "
+                   "Swift: Use the throwing resumeExternalUserAgentFlow(_:)");
 
 @optional
 /*! @brief Clients should call this method with the result of the external user-agent code flow if
@@ -71,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
         NO if the URL did not match (\@c OIDErrorCodeURLMismatch) or no authorization flow
         was pending (\@c OIDErrorCodeInvalidAuthorizationFlow).
  */
-- (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL error:(NSError *_Nullable *_Nullable)error;
+- (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL error:(NSError *_Nullable *_Nullable)error NS_SWIFT_NAME(resumeExternalUserAgentFlow(_:));
 
 @required
 /*! @brief @c OIDExternalUserAgent or clients should call this method when the
